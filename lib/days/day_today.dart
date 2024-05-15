@@ -14,8 +14,6 @@ class DayToday extends StatelessWidget {
   final String humidity;
   final String visibility;
   final String temp;
-  final String tempMin;
-  final String tempMax;
   final String icon;
   final String description;
   final String summary;
@@ -39,6 +37,7 @@ class DayToday extends StatelessWidget {
   final String moonrise;
   final String moonset;
   final String moonPhase;
+  final String location;
 
   const DayToday({
     super.key,
@@ -49,8 +48,6 @@ class DayToday extends StatelessWidget {
     required this.humidity,
     required this.visibility,
     required this.temp,
-    required this.tempMin,
-    required this.tempMax,
     required this.icon,
     required this.description,
     required this.summary,
@@ -70,6 +67,7 @@ class DayToday extends StatelessWidget {
     required this.moonrise,
     required this.moonset,
     required this.moonPhase,
+    required this.location,
   });
 
   @override
@@ -80,10 +78,9 @@ class DayToday extends StatelessWidget {
           children: [
             FrostedGlassCurrent(
               temp: temp,
-              tempMin: tempMin,
-              tempMax: tempMax,
               icon: icon,
               description: description,
+              location: location,
             ),
             DailySummary(
               summary: summary,

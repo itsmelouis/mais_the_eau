@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class DailySummary extends StatelessWidget {
-
   final String summary;
 
   const DailySummary({
