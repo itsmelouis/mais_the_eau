@@ -11,6 +11,7 @@ import 'package:mais_the_eau/days/day_today.dart';
 import 'package:mais_the_eau/models/weahter_data.dart';
 import 'package:mais_the_eau/widgets/daily_summary.dart';
 import 'package:mais_the_eau/widgets/frosted_glass_current.dart';
+import 'package:mais_the_eau/widgets/frosted_glass.dart'; // Import correct
 import 'package:mais_the_eau/widgets/hourly_weather.dart';
 import 'package:mais_the_eau/widgets/loader.dart';
 import 'package:mais_the_eau/widgets/other_temps.dart';
@@ -320,30 +321,6 @@ class _HomePageState extends State<HomePage> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        WeatherDetailsCurrent(
-                          windSpeed:
-                              "${weatherData?.getCurrentWeather().current.windSpeed.toString() ?? ''} m/s",
-                          windDegree:
-                              '${weatherData?.getCurrentWeather().current.windDeg.toString()}°',
-                          pressure:
-                              '${weatherData?.getCurrentWeather().current.pressure.toString()} hPa',
-                          uvi: weatherData
-                                  ?.getCurrentWeather()
-                                  .current
-                                  .uvi
-                                  .toString() ??
-                              '',
-                          humidity:
-                              '${weatherData?.getCurrentWeather().current.humidity.toString()}%',
-                          visibility:
-                              '${(weatherData!.getCurrentWeather().current.visibility! / 1000).round().toString()} KM',
-                          clouds:
-                              "${weatherData?.getCurrentWeather().current.clouds.toString()}%",
-                          dewPoint:
-                              "${weatherData?.getCurrentWeather().current.dewPoint.toString()}°",
-                          windGust:
-                              "${weatherData?.getDailyWeather().daily[0].windGust?.round().toString()} m/s",
-                        ),
                         FrostedGlassCurrent(
                           temp: weatherData
                                   ?.getCurrentWeather()
@@ -367,6 +344,30 @@ class _HomePageState extends State<HomePage> {
                                   .toString() ??
                               '',
                           location: location.isNotEmpty ? location : 'Inconnu',
+                        ),
+                        WeatherDetailsCurrent(
+                          windSpeed:
+                              "${weatherData?.getCurrentWeather().current.windSpeed.toString() ?? ''} m/s",
+                          windDegree:
+                              '${weatherData?.getCurrentWeather().current.windDeg.toString()}°',
+                          pressure:
+                              '${weatherData?.getCurrentWeather().current.pressure.toString()} hPa',
+                          uvi: weatherData
+                                  ?.getCurrentWeather()
+                                  .current
+                                  .uvi
+                                  .toString() ??
+                              '',
+                          humidity:
+                              '${weatherData?.getCurrentWeather().current.humidity.toString()}%',
+                          visibility:
+                              '${(weatherData!.getCurrentWeather().current.visibility! / 1000).round().toString()} KM',
+                          clouds:
+                              "${weatherData?.getCurrentWeather().current.clouds.toString()}%",
+                          dewPoint:
+                              "${weatherData?.getCurrentWeather().current.dewPoint.toString()}°",
+                          windGust:
+                              "${weatherData?.getDailyWeather().daily[0].windGust?.round().toString()} m/s",
                         ),
                         HourlyWeather(
                           length:
@@ -413,25 +414,23 @@ class _HomePageState extends State<HomePage> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        Day(
-                          windSpeed:
-                              "${weatherData?.getDailyWeather().daily[1].windSpeed.toString()} m/s",
-                          pressure:
-                              '${weatherData?.getDailyWeather().daily[1].pressure.toString()} hPa',
-                          windDegree:
-                              '${weatherData?.getDailyWeather().daily[1].windDeg.toString()}°',
-                          uvi: weatherData
+                        FrostedGlassDate(
+                          tempMin: weatherData
                                   ?.getDailyWeather()
                                   .daily[1]
-                                  .uvi
+                                  .temp
+                                  ?.min!
+                                  .round()
                                   .toString() ??
                               '',
-                          humidity:
-                              '${weatherData?.getDailyWeather().daily[1].humidity.toString()}%',
-                          tempMin:
-                              "${weatherData?.getDailyWeather().daily[1].temp?.min!.round().toString()}",
-                          tempMax:
-                              "${weatherData?.getDailyWeather().daily[1].temp?.max!.round().toString()}",
+                          tempMax: weatherData
+                                  ?.getDailyWeather()
+                                  .daily[1]
+                                  .temp
+                                  ?.max!
+                                  .round()
+                                  .toString() ??
+                              '',
                           icon: weatherData
                                   ?.getDailyWeather()
                                   .daily[1]
@@ -446,14 +445,41 @@ class _HomePageState extends State<HomePage> {
                                   .main
                                   .toString() ??
                               '',
-                          summary:
-                              "${weatherData?.getDailyWeather().daily[1].summary}",
+                          date: DateTime.now()
+                              .add(Duration(days: 1)), // Date de demain
+                          location: location.isNotEmpty ? location : 'Inconnu',
+                        ),
+                        WeatherDetails(
+                          windSpeed:
+                              "${weatherData?.getDailyWeather().daily[1].windSpeed.toString()} m/s",
+                          windDegree:
+                              '${weatherData?.getDailyWeather().daily[1].windDeg.toString()}°',
+                          pressure:
+                              '${weatherData?.getDailyWeather().daily[1].pressure.toString()} hPa',
+                          uvi: weatherData
+                                  ?.getDailyWeather()
+                                  .daily[1]
+                                  .uvi
+                                  .toString() ??
+                              '',
+                          humidity:
+                              '${weatherData?.getDailyWeather().daily[1].humidity.toString()}%',
                           clouds:
                               "${weatherData?.getDailyWeather().daily[1].clouds.toString()}%",
                           dewPoint:
                               "${weatherData?.getDailyWeather().daily[1].dewPoint.toString()}°",
                           windGust:
                               "${weatherData?.getDailyWeather().daily[1].windGust?.round().toString()} m/s",
+                        ),
+                        HourlyWeather(
+                          length:
+                              weatherData?.getHourlyWeather().hourly.length ??
+                                  0,
+                          hourlyList: hourlyTime,
+                          hourlyIconList: hourlyIcon,
+                          hourlyTempList: hourlyTemp,
+                        ),
+                        OtherTemps(
                           morningTemp:
                               "${weatherData?.getDailyWeather().daily[1].temp?.morn!.round().toString()}",
                           dayTemp:
@@ -462,6 +488,8 @@ class _HomePageState extends State<HomePage> {
                               "${weatherData?.getDailyWeather().daily[1].temp?.eve!.round().toString()}",
                           nightTemp:
                               "${weatherData?.getDailyWeather().daily[1].temp?.night!.round().toString()}",
+                        ),
+                        RiseSetTimings(
                           sunrise: getTime(
                               weatherData?.getDailyWeather().daily[1].sunrise),
                           sunset: getTime(
@@ -476,6 +504,10 @@ class _HomePageState extends State<HomePage> {
                                   .moonPhase
                                   .toString() ??
                               '',
+                        ),
+                        DailySummary(
+                          summary:
+                              "${weatherData?.getDailyWeather().daily[1].summary}",
                         ),
                       ],
                     ),
