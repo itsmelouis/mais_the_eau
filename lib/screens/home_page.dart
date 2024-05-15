@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +41,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     getCurrentLocation();
   }
 
@@ -78,20 +76,15 @@ class _HomePageState extends State<HomePage> {
         .then((value) {
       lat = value.latitude;
       lon = value.longitude;
-      print(lat);
-      print(lon);
       getCityName();
       getWeatherData();
-
       return value;
     });
   }
 
   getCityName() async {
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, lon);
-
     Placemark place = placemarks[0];
-
     setState(() {
       location = "${place.locality}";
     });
@@ -101,22 +94,19 @@ class _HomePageState extends State<HomePage> {
     try {
       final response =
           await http.get(Uri.parse(OpenWeatherAPI().apiUrl(lat, lon)));
-
       if (response.statusCode == 200) {
         var jsonString = jsonDecode(response.body);
         weatherData = WeatherData(
-            WeatherDataCurrent.fromJson(jsonString),
-            WeatherDataHourly.fromJson(jsonString),
-            WeatherDataDaily.fromJson(jsonString));
-        print(jsonString);
+          WeatherDataCurrent.fromJson(jsonString),
+          WeatherDataHourly.fromJson(jsonString),
+          WeatherDataDaily.fromJson(jsonString),
+        );
         getDaysAndDates();
         getHourlyTime();
         getHourlyData();
-
         setState(() {
           isLoading = false;
         });
-
         return weatherData;
       } else {
         return "Error";
@@ -184,23 +174,51 @@ class _HomePageState extends State<HomePage> {
             length: 8,
             child: Scaffold(
               appBar: AppBar(
-                title: Text(
-                  location,
-                  style: Theme.of(context).textTheme.headlineLarge,
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                        height: 8), // Add some space between text and row
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.location_on,
+                          color: Colors.black,
+                        ),
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Rechercher une ville',
+                              border: InputBorder.none,
+                              hintStyle: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.color
+                                    ?.withOpacity(0.6),
+                              ),
+                            ),
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).textTheme.bodyLarge?.color,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.search,
+                          color: Theme.of(context).iconTheme.color,
+                        ),
+                        Icon(
+                          Icons.favorite,
+                          color: Theme.of(context).iconTheme.color,
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+                    ),
+                  ],
                 ),
                 centerTitle: true,
                 backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      _bottomSheet();
-                    },
-                    icon: Icon(
-                      Icons.map_rounded,
-                      color: Theme.of(context).iconTheme.color,
-                    ),
-                  ),
-                ],
                 bottom: TabBar(
                   isScrollable: true,
                   automaticIndicatorColorAdjustment: true,
@@ -800,10 +818,7 @@ class _HomePageState extends State<HomePage> {
           maxChildSize: 0.97,
           builder: (_, controller) {
             return Container(
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-              ),
+              padding: const EdgeInsets.only(left: 16, right: 16),
               child: ListView(
                 controller: controller,
                 children: [
@@ -812,28 +827,30 @@ class _HomePageState extends State<HomePage> {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   DataTable(
                     dataRowMaxHeight: 70,
                     columns: [
                       DataColumn(
-                          label: Text("Detail",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500))),
+                        label: Text(
+                          "Detail",
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                      ),
                       DataColumn(
-                          label: Text("Description",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500))),
+                        label: Text(
+                          "Description",
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                      ),
                     ],
                     rows: [
                       DataRow(cells: [
