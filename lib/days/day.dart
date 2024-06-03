@@ -31,6 +31,9 @@ class Day extends StatelessWidget {
   final String moonset;
   final String moonPhase;
 
+  final DateTime date;
+  final String location;
+
   const Day({
     super.key,
     required this.windSpeed,
@@ -55,6 +58,8 @@ class Day extends StatelessWidget {
     required this.moonrise,
     required this.moonset,
     required this.moonPhase,
+    required this.date,
+    required this.location,
   });
 
   @override
@@ -63,11 +68,13 @@ class Day extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            FrostedGlass(
+            FrostedGlassDate(
               tempMin: tempMin,
               tempMax: tempMax,
               icon: icon,
               description: description,
+              date: date,
+              location: location,
             ),
             DailySummary(
               summary: summary,

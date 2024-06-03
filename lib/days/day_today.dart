@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_the_eau/widgets/daily_summary.dart';
-import 'package:mais_the_eau/widgets/frosted_glass_current.dart';
+import 'package:mais_the_eau/widgets/frosted_glass.dart'; // Assurez-vous que le nom du fichier correspond à celui de votre projet
 import 'package:mais_the_eau/widgets/hourly_weather.dart';
 import 'package:mais_the_eau/widgets/other_temps.dart';
 import 'package:mais_the_eau/widgets/rise_set_timings.dart';
@@ -40,6 +40,9 @@ class DayToday extends StatelessWidget {
   final String moonset;
   final String moonPhase;
 
+  final DateTime date; // Ajout de l'argument 'date'
+  final String location; // Ajout de l'argument 'location'
+
   const DayToday({
     super.key,
     required this.windSpeed,
@@ -70,6 +73,8 @@ class DayToday extends StatelessWidget {
     required this.moonrise,
     required this.moonset,
     required this.moonPhase,
+    required this.date, // Initialisation de l'argument 'date'
+    required this.location, // Initialisation de l'argument 'location'
   });
 
   @override
@@ -78,12 +83,13 @@ class DayToday extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            FrostedGlassCurrent(
-              temp: temp,
+            FrostedGlassDate(
               tempMin: tempMin,
               tempMax: tempMax,
               icon: icon,
               description: description,
+              date: date, // Passage de l'argument 'date'
+              location: location, // Passage de l'argument 'location'
             ),
             DailySummary(
               summary: summary,

@@ -1,22 +1,24 @@
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class FrostedGlass extends StatelessWidget {
-
+class FrostedGlassDate extends StatelessWidget {
   final double borderRadius;
-
   final String tempMin;
   final String tempMax;
   final String icon;
   final String description;
+  final DateTime date;
+  final String location;
 
-  const FrostedGlass({
+  const FrostedGlassDate({
     Key? key,
     this.borderRadius = 30.0,
     required this.tempMin,
     required this.tempMax,
     required this.icon,
     required this.description,
+    required this.date,
+    required this.location,
   }) : super(key: key);
 
   @override
@@ -27,41 +29,79 @@ class FrostedGlass extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(10),
         width: double.infinity,
-        height: 150,
+        height: 250,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           color: Theme.of(context).colorScheme.secondary,
         ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Image.asset(
-                "assets/weather/$icon.png",
-                width: 100,
-                height: 100,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Column(
+                children: [
+                  Text(
+                    DateFormat('EEE, dd MMM yyyy').format(date),
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.location_on, color: Colors.black),
+                      Text(
+                        location.isNotEmpty ? location : 'Inconnu',
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            Expanded(
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      description,
-                      style: Theme.of(context).textTheme.headlineLarge,
+                    Image.asset(
+                      "assets/weather/$icon.png",
+                      width: 100,
+                      height: 100,
                     ),
-                    const SizedBox(height: 10,),
-                    Text(
-                      "Min: $tempMin°\nMax: $tempMax°",
-                      style: Theme.of(context).textTheme.headlineLarge,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "$tempMin°/$tempMax°",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  fontSize: 14,
+                                ),
+                          ),
+                          Text(
+                            description,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text(
+                            "$tempMin°/$tempMax°",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  fontSize: 14,
+                                ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
