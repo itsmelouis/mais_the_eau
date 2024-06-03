@@ -77,6 +77,8 @@ class _HomePageState extends State<HomePage> {
 
   WeatherData? weatherData;
 
+  TextEditingController _searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -116,7 +118,7 @@ class _HomePageState extends State<HomePage> {
       lat = value.latitude;
       lon = value.longitude;
       getCityName();
-      getWeatherData();
+      getWeatherData(latitude: lat, longitude: lon);
       return value;
     });
   }
@@ -129,10 +131,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  getWeatherData() async {
+  getWeatherData({required double latitude, required double longitude}) async {
     try {
-      final response =
-          await http.get(Uri.parse(OpenWeatherAPI().apiUrl(lat, lon)));
+      final response = await http
+          .get(Uri.parse(OpenWeatherAPI().apiUrl(latitude, longitude)));
       if (response.statusCode == 200) {
         var jsonString = jsonDecode(response.body);
         weatherData = WeatherData(
@@ -152,6 +154,24 @@ class _HomePageState extends State<HomePage> {
       }
     } catch (e) {
       return e.toString();
+    }
+  }
+
+  searchCityWeather(String cityName) async {
+    try {
+      List<Location> locations = await locationFromAddress(cityName);
+      if (locations.isNotEmpty) {
+        double latitude = locations[0].latitude;
+        double longitude = locations[0].longitude;
+        getWeatherData(latitude: latitude, longitude: longitude);
+        setState(() {
+          location = cityName;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        error = "City not found!";
+      });
     }
   }
 
@@ -226,6 +246,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Expanded(
                           child: TextField(
+                            controller: _searchController,
+                            onSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                searchCityWeather(value);
+                              }
+                            },
                             decoration: InputDecoration(
                               hintText: 'Rechercher une ville',
                               border: InputBorder.none,
