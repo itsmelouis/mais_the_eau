@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mais_the_eau/screens/home_page.dart';
-import 'package:mais_the_eau/screens/second_page.dart';
+import 'package:mais_the_eau/screens/forecasts_page.dart';
+import 'package:mais_the_eau/screens/bookmarks_page.dart';
+import 'package:mais_the_eau/screens/glossary_page.dart';
 import 'package:mais_the_eau/theme/app_theme.dart';
 
 void main() {
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       home: const HomePage(),
       routes: {
-        '/second': (context) => const SecondPage(),
+        '/forecasts': (context) => const ForecastsPage(),
+        '/bookmarks': (context) => const BookmarksPage(),
+        '/glossary': (context) => const GlossaryPage(),
       },
     );
   }
