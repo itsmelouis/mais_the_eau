@@ -21,7 +21,7 @@ import 'package:mais_the_eau/widgets/rise_set_timings.dart';
 import 'package:mais_the_eau/widgets/weather_detail_current.dart';
 import 'package:mais_the_eau/widgets/weather_detail_widget.dart';
 import 'package:mais_the_eau/widgets/weather_details.dart';
-
+import 'package:mais_the_eau/widgets/weekly_forecast.dart';
 
 import 'package:mais_the_eau/screens/bookmarks_page.dart';
 import 'package:mais_the_eau/screens/glossary_page.dart';
@@ -544,10 +544,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   // Semaine Tab
-                  Center(
-                    child: Text(
-                      'Informations de la semaine à venir...',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                  SingleChildScrollView(
+                    child: WeeklyForecast(
+                      weatherData: weatherData,
+                      location: location.isNotEmpty ? location : 'Inconnu',
                     ),
                   ),
                 ],
