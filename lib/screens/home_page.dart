@@ -10,8 +10,14 @@ import 'package:mais_the_eau/api/weather.dart';
 import 'package:mais_the_eau/days/day.dart';
 import 'package:mais_the_eau/days/day_today.dart';
 import 'package:mais_the_eau/models/weahter_data.dart';
+import 'package:mais_the_eau/navbar/navbar.dart';
 import 'package:mais_the_eau/tabs/tabs.dart';
 import 'package:mais_the_eau/widgets/loader.dart';
+
+
+import 'package:mais_the_eau/screens/bookmarks_page.dart';
+import 'package:mais_the_eau/screens/glossary_page.dart';
+import 'package:mais_the_eau/screens/forecasts_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +27,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  final List<String> _titles = [
+    'Accueil',
+    'Prévisions',
+    'Favoris',
+    'Glossaires'
+  ];
+
+  final List<Widget> _pages = [
+    const HomePage(),
+    const ForecastsPage(),
+    const BookmarksPage(),
+    const GlossaryPage()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    Navigator.pushReplacementNamed(
+        context, ['/', '/forecasts', '/bookmarks', '/glossary'][index]);
+  }
+
   String location = "Your Location";
   String? error;
 
@@ -777,6 +807,28 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ],
+              ),
+              bottomNavigationBar: NavBar(
+                selectedIndex: _selectedIndex,
+                items: [
+                  NavBarItem(
+                    icon: Icon(Icons.home),
+                    title: Text('Accueil'),
+                  ),
+                  NavBarItem(
+                    icon: Icon(Icons.cloud),
+                    title: Text('Prévisions'),
+                  ),
+                  NavBarItem(
+                    icon: Icon(Icons.bookmark),
+                    title: Text('Favoris'),
+                  ),
+                  NavBarItem(
+                    icon: Icon(Icons.book),
+                    title: Text('Glossaires'),
+                  ),
+                ],
+                onItemSelected: _onItemTapped,
               ),
             ),
           );
