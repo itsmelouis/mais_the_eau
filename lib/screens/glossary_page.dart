@@ -77,11 +77,11 @@ class _GlossaryPageState extends State<GlossaryPage> {
                             Text(group['title'],
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline6), // Titre
+                                    .headlineLarge), // Titre
                             Text(group['text'],
                                 style: Theme.of(context)
                                     .textTheme
-                                    .bodyText2), // Texte en dessous
+                                    .bodyLarge), // Texte en dessous
                           ],
                         ),
                       ],
