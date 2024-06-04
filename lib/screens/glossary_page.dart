@@ -8,6 +8,29 @@ class GlossaryPage extends StatefulWidget {
 }
 
 class _GlossaryPageState extends State<GlossaryPage> {
+  List<Map<String, dynamic>> groupData = [
+    {
+      'icon': Icons.info,
+      'title': 'Petit titre 1',
+      'text': 'Texte en dessous 1',
+    },
+    {
+      'icon': Icons.warning,
+      'title': 'Petit titre 2',
+      'text': 'Texte en dessous 2',
+    },
+    {
+      'icon': Icons.error,
+      'title': 'Petit titre 3',
+      'text': 'Texte en dessous 3',
+    },
+    {
+      'icon': Icons.help,
+      'title': 'Petit titre 4',
+      'text': 'Texte en dessous 4',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
