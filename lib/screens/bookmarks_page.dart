@@ -46,8 +46,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
               alignment: Alignment.centerLeft,
               child: const Text(
                 'Mes recherches',
-                style: TextStyle(
-                    fontSize: 24.0), // Changez la taille de la police à 22px
+                style: TextStyle(fontSize: 24.0), //
               ),
             ),
             const SizedBox(height: 15),
@@ -65,8 +64,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 14.0,
-                        color: Colors
-                            .grey, // Changez la couleur de l'icône en gris
+                        color: Colors.grey, //
                       ),
                     ],
                   ),
@@ -78,12 +76,15 @@ class _BookmarksPageState extends State<BookmarksPage> {
               alignment: Alignment.centerLeft,
               child: const Text(
                 'Mes favoris',
-                style: TextStyle(
-                    fontSize: 24.0), // Changez la taille de la police à 22px
+                style: TextStyle(fontSize: 24.0), //
               ),
             ),
+            const SizedBox(height: 25),
+            // Ajoutez les deux sections ici
+            //
+            //
+
             const SizedBox(height: 10),
-            // Ajoutez vos deux sections ici
             const SizedBox(height: 10),
             Container(
               height: 1,
