@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 
-class BookmarksPage extends StatefulWidget {
-  const BookmarksPage({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
-  State<BookmarksPage> createState() => _BookmarksPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _BookmarksPageState extends State<BookmarksPage> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Favoris',
+          'Paramètres',
           style: TextStyle(
             color: Colors.black,
             fontSize: 24, // Smaller font size
@@ -23,8 +23,8 @@ class _BookmarksPageState extends State<BookmarksPage> {
       ),
       body: Center(
         child: Text(
-          'Welcome to the Bookmarks Page!',
-          style: Theme.of(context).textTheme.headlineMedium,
+          'Bienvenue dans les paramètres !',
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.black),
         ),
       ),
     );
