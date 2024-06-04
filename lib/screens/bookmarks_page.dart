@@ -41,12 +41,16 @@ class _BookmarksPageState extends State<BookmarksPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 1),
-
+            const SizedBox(height: 0),
             Align(
               alignment: Alignment.centerLeft,
-              child: const Text('Mes recherches'),
+              child: const Text(
+                'Mes recherches',
+                style: TextStyle(
+                    fontSize: 24.0), // Changez la taille de la police à 22px
+              ),
             ),
+            const SizedBox(height: 15),
             for (var i = 0; i < 3; i++)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,17 +58,29 @@ class _BookmarksPageState extends State<BookmarksPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Paris'),
-                      const Icon(Icons.arrow_forward_ios),
+                      Text(
+                        'Paris',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14.0,
+                        color: Colors
+                            .grey, // Changez la couleur de l'icône en gris
+                      ),
                     ],
                   ),
                   const Divider(color: Colors.grey),
                 ],
               ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             Align(
               alignment: Alignment.centerLeft,
-              child: const Text('Mes favoris'),
+              child: const Text(
+                'Mes favoris',
+                style: TextStyle(
+                    fontSize: 24.0), // Changez la taille de la police à 22px
+              ),
             ),
             const SizedBox(height: 10),
             // Ajoutez vos deux sections ici
