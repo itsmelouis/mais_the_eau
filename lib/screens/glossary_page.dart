@@ -46,21 +46,6 @@ class _GlossaryPageState extends State<GlossaryPage> {
       'text': "Le moment où la lune disparaît sous l'horizon.",
     },
     {
-      'icon': 'assets/icons/temperature.png',
-      'title': 'Température',
-      'text': 'La mesure de la chaleur ou du froid en degrés Celsius.',
-    },
-    {
-      'icon': 'assets/icons/visibility.png',
-      'title': 'Visibilité',
-      'text': 'La distance à laquelle on peut voir clairement en mètres.',
-    },
-    {
-      'icon': 'assets/icons/precipitation.png',
-      'title': 'Précipitations',
-      'text': 'La quantité de pluie ou de neige tombée en mm.',
-    },
-    {
       'icon': 'assets/icons/winddegree.png',
       'title': 'Direction du vent',
       'text': 'L'
