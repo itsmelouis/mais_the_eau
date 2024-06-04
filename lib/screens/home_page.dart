@@ -14,6 +14,7 @@ import 'package:mais_the_eau/widgets/hourly_weather.dart';
 import 'package:mais_the_eau/widgets/loader.dart';
 import 'package:mais_the_eau/widgets/other_temps.dart';
 import 'package:mais_the_eau/widgets/rise_set_timings.dart';
+import 'package:mais_the_eau/widgets/weekly_weather.dart';
 import 'package:mais_the_eau/widgets/weather_detail_current.dart';
 import 'package:mais_the_eau/widgets/weather_details.dart';
 import 'package:mais_the_eau/widgets/weekly_forecast.dart';
@@ -34,11 +35,14 @@ class _HomePageState extends State<HomePage> {
   double lon = 0.0;
 
   List dates = [];
-  List days = [];
+  List<String> days = [];
 
   List<String> hourlyTime = [];
   List<String> hourlyTemp = [];
   List<String> hourlyIcon = [];
+
+  List<String> dailyIcons = [];
+  List<String> dailyTemps = [];
 
   bool isLoading = true;
   bool isError = false;
@@ -113,6 +117,7 @@ class _HomePageState extends State<HomePage> {
         getDaysAndDates();
         getHourlyTime();
         getHourlyData();
+        getDailyData();
         setState(() {
           isLoading = false;
         });
@@ -192,6 +197,15 @@ class _HomePageState extends State<HomePage> {
           .toString());
     }
   }
+
+  getDailyData() {
+    for (int i = 0; i < weatherData!.getDailyWeather().daily.length; i++) {
+      dailyTemps.add(weatherData!.getDailyWeather().daily[i].temp!.day!.round().toString());
+      dailyIcons.add(weatherData!.getDailyWeather().daily[i].weather![0].icon.toString());
+    }
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -312,6 +326,14 @@ class _HomePageState extends State<HomePage> {
                                   .toString() ??
                               '',
                           location: location.isNotEmpty ? location : 'Inconnu',
+                        ),
+                        WeeklyWeather(
+                          length:
+                              weatherData?.getDailyWeather().daily.length ??
+                                  0,
+                          dayList: days,
+                          iconList: dailyIcons,
+                          tempList: dailyTemps,
                         ),
                       ],
                     ),
