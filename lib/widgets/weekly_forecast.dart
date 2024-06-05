@@ -54,7 +54,7 @@ class WeeklyForecast extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            DateFormat('EEEE, dd MMM').format(
+                            DateFormat('EEE d MMM yyyy', 'fr').format(
                               DateTime.fromMillisecondsSinceEpoch((daily.dt ?? 0) * 1000),
                             ),
                             style: Theme.of(context).textTheme.bodyMedium,

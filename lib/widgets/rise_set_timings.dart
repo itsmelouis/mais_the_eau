@@ -38,34 +38,39 @@ class RiseSetTimings extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Text(
+            "Lever/coucher soleil et lune",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               WeatherDetailWidget(
                 asset: "assets/icons/sunrise.png",
                 value: sunrise,
-                title: "Sunrise",
+                title: "Levé du soleil",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/sunset.png",
                 value: sunset,
-                title: "Sunset",
+                title: "Couché du soleil",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/moonrise.png",
                 value: moonrise,
-                title: "Moonrise",
+                title: "Levé de la Lune",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/moonset.png",
                 value: moonset,
-                title: "Moonset",
+                title: "Couché de la Lune",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),

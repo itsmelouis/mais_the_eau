@@ -33,11 +33,11 @@ class WeatherDetailWidget extends StatelessWidget {
           value,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        const SizedBox(height: 5),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
+        // const SizedBox(height: 5),
+        // Text(
+        //   title,
+        //   style: Theme.of(context).textTheme.bodySmall,
+        // ),
       ],
     );
   }

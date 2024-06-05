@@ -36,7 +36,7 @@ class OtherTemps extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Other Temps",
+            "Autres températures",
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 15),
@@ -46,28 +46,28 @@ class OtherTemps extends StatelessWidget {
               WeatherDetailWidget(
                 asset: "assets/icons/sunrise.png",
                 value: "$morningTemp°",
-                title: "Morning",
+                title: "Matin",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/day.png",
                 value: "$dayTemp°",
-                title: "Day",
+                title: "Jour",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/sunset.png",
                 value: "$eveningTemp°",
-                title: "Evening",
+                title: "Soir",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
               WeatherDetailWidget(
                 asset: "assets/icons/night.png",
                 value: "$nightTemp°",
-                title: "Night",
+                title: "Nuit",
                 isIcon: false,
                 icon: const Icon(Icons.co2),
               ),
