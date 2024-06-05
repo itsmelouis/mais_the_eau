@@ -112,10 +112,11 @@ class _BookmarksPageState extends State<BookmarksPage> {
                         ),
                       ],
                     ),
-                    Icon(
-                      Icons.wb_sunny,
-                      size: 48,
-                      color: Colors.grey[400],
+                    Image.asset(
+                      'assets/icons/day.png',
+                      width: 70,
+                      height: 70,
+                      color: Colors.grey,
                     ),
                   ],
                 ),
