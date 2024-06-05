@@ -80,10 +80,48 @@ class _BookmarksPageState extends State<BookmarksPage> {
               ),
             ),
             const SizedBox(height: 25),
-            // Ajoutez les deux sections ici
-            //
-            //
-
+            Container(
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.grey[600],
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Valenciennes',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          '19°C  |  Éclaircies',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      Icons.wb_sunny,
+                      size: 48,
+                      color: Colors.grey[400],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
             const SizedBox(height: 10),
             const SizedBox(height: 10),
             Container(
