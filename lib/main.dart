@@ -70,22 +70,22 @@ class _MainScreenState extends State<MainScreen> {
           SalomonBottomBarItem(
             icon: Icon(Icons.cloud),
             title: Text("Prévisions"),
-            selectedColor: Colors.pink,
+            selectedColor: Theme.of(context).iconTheme.color,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.favorite_border),
             title: Text("Favoris"),
-            selectedColor: Colors.orange,
+            selectedColor: Theme.of(context).iconTheme.color,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.book),
             title: Text("Glossaire"),
-            selectedColor: Colors.teal,
+            selectedColor: Theme.of(context).iconTheme.color,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.settings),
             title: Text("Paramètres"),
-            selectedColor: Colors.teal,
+            selectedColor: Theme.of(context).iconTheme.color,
           ),
         ],
       ),
