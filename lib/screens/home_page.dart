@@ -283,6 +283,8 @@ class _HomePageState extends State<HomePage> {
                 centerTitle: true,
                 backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
                 bottom: TabBar(
+                  tabAlignment: TabAlignment.start,
+                  padding: EdgeInsets.only(bottom: 5.0),
                   isScrollable: true,
                   automaticIndicatorColorAdjustment: true,
                   indicator: Theme.of(context).tabBarTheme.indicator,
