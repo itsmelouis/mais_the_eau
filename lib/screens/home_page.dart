@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
 
   String getDay(final day) {
     DateTime time = DateTime.fromMillisecondsSinceEpoch(day * 1000);
-    final dayName = DateFormat('EEEE').format(time);
+    final dayName = DateFormat('E', 'fr').format(time);
     days.add(dayName);
     return dayName;
   }

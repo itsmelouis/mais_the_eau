@@ -42,7 +42,7 @@ class WeeklyWeather extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  dayList[index].substring(0, 1),
+                  '${dayList[index].substring(0, 3)}.',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 5),
