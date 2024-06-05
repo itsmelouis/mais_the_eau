@@ -17,7 +17,7 @@ class WeeklyForecast extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.all(20.0),
           child: Text(
             "Prévisions pour la semaine - $location",
             style: Theme.of(context).textTheme.headlineLarge,
@@ -47,7 +47,7 @@ class WeeklyForecast extends StatelessWidget {
                       height: 50,
                     ),
                     const SizedBox(width: 10),
-                    
+
                     // Date et description au milieu
                     Expanded(
                       child: Column(
@@ -55,7 +55,8 @@ class WeeklyForecast extends StatelessWidget {
                         children: [
                           Text(
                             DateFormat('EEE d MMM yyyy', 'fr').format(
-                              DateTime.fromMillisecondsSinceEpoch((daily.dt ?? 0) * 1000),
+                              DateTime.fromMillisecondsSinceEpoch(
+                                  (daily.dt ?? 0) * 1000),
                             ),
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
