@@ -200,12 +200,17 @@ class _HomePageState extends State<HomePage> {
 
   getDailyData() {
     for (int i = 0; i < weatherData!.getDailyWeather().daily.length; i++) {
-      dailyTemps.add(weatherData!.getDailyWeather().daily[i].temp!.day!.round().toString());
-      dailyIcons.add(weatherData!.getDailyWeather().daily[i].weather![0].icon.toString());
+      dailyTemps.add(weatherData!
+          .getDailyWeather()
+          .daily[i]
+          .temp!
+          .day!
+          .round()
+          .toString());
+      dailyIcons.add(
+          weatherData!.getDailyWeather().daily[i].weather![0].icon.toString());
     }
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -266,17 +271,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 centerTitle: true,
                 backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      _bottomSheet();
-                    },
-                    icon: Icon(
-                      Icons.map_rounded,
-                      color: Theme.of(context).iconTheme.color,
-                    ),
-                  ),
-                ],
                 bottom: TabBar(
                   isScrollable: true,
                   automaticIndicatorColorAdjustment: true,
@@ -329,8 +323,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         WeeklyWeather(
                           length:
-                              weatherData?.getDailyWeather().daily.length ??
-                                  0,
+                              weatherData?.getDailyWeather().daily.length ?? 0,
                           dayList: days,
                           iconList: dailyIcons,
                           tempList: dailyTemps,
@@ -544,183 +537,5 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           );
-  }
-
-  void _bottomSheet() {
-    showModalBottomSheet(
-      constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height - 200,
-      ),
-      isDismissible: true,
-      isScrollControlled: true,
-      enableDrag: true,
-      showDragHandle: true,
-      backgroundColor: Theme.of(context).bottomSheetTheme.backgroundColor,
-      context: context,
-      builder: (context) {
-        return DraggableScrollableSheet(
-          initialChildSize: 0.97,
-          minChildSize: 0.97,
-          maxChildSize: 0.97,
-          builder: (_, controller) {
-            return Container(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: ListView(
-                controller: controller,
-                children: [
-                  Text(
-                    "Weather Legend",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                  const SizedBox(height: 10),
-                  DataTable(
-                    dataRowMaxHeight: 70,
-                    columns: [
-                      DataColumn(
-                        label: Text(
-                          "Detail",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          "Description",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                    rows: [
-                      DataRow(cells: [
-                        DataCell(Text("Wind Speed",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text("Speed of wind, m/s",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Wind Degree",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "Wind direction, degrees (meteorological).",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Pressure",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "Atmospheric pressure on the sea level, hPa",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("UV Index",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "The intensity of UV from sun, varies from 0 to 11+.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Humidity",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text("Humidity, %",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Visibility",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "Average visibility, metres. The maximum value of the visibility is 10 km.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Clouds",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text("Cloudiness, %",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Dew Point",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "Temperature below which water droplets forms a dew.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text("Wind Gust",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                        DataCell(Text(
-                            "A wind gust is a sudden burst of high-speed wind.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontSize: 14))),
-                      ]),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
   }
 }
