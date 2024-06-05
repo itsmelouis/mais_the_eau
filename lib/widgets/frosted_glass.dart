@@ -85,15 +85,6 @@ class FrostedGlassDate extends StatelessWidget {
                             description,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          Text(
-                            "$tempMin°/$tempMax°",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                  fontSize: 14,
-                                ),
-                          ),
                         ],
                       ),
                     ),
