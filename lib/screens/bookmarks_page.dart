@@ -12,6 +12,9 @@ class _BookmarksPageState extends State<BookmarksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Theme.of(context).iconTheme.color,
+        ),
         title: const Text(
           'Favoris',
           style: TextStyle(
@@ -24,19 +27,19 @@ class _BookmarksPageState extends State<BookmarksPage> {
         padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 25.0),
         child: Column(
           children: [
-            SizedBox(
+            Container(
               height: 80.0,
               child: TextField(
-                style: const TextStyle(fontSize: 14.0),
+                style: TextStyle(fontSize: 14.0),
                 decoration: InputDecoration(
                   hintText: 'Rechercher une ville',
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(
                         8.0), // Bordure légèrement arrondie
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   hintStyle: TextStyle(
@@ -52,16 +55,16 @@ class _BookmarksPageState extends State<BookmarksPage> {
               ),
             ),
             const SizedBox(height: 0),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: const Text(
                 'Mes recherches',
                 style: TextStyle(fontSize: 24.0), //
               ),
             ),
             const SizedBox(height: 15),
             for (var i = 0; i < 3; i++)
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
@@ -78,13 +81,13 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       ),
                     ],
                   ),
-                  Divider(color: Colors.grey),
+                  const Divider(color: Colors.grey),
                 ],
               ),
             const SizedBox(height: 25),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: const Text(
                 'Mes favoris',
                 style: TextStyle(fontSize: 24.0), //
               ),
@@ -93,7 +96,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                color: const Color(0xFFedf6f9),
+                color: Color(0xFFedf6f9),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Padding(
@@ -105,14 +108,14 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Text(
+                        Text(
                           'Valenciennes',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 2),
+                        SizedBox(height: 2),
                         Text(
                           '19°C  |  Éclaircies',
                           style: TextStyle(
@@ -126,7 +129,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       'assets/icons/day.png',
                       width: 70,
                       height: 70,
-                      color: const Color.fromARGB(255, 0, 111, 166),
+                      color: Color.fromARGB(255, 0, 111, 166),
                     ),
                   ],
                 ),
