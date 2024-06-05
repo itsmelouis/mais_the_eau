@@ -25,7 +25,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
         child: Column(
           children: [
             Container(
-              height: 75.0,
+              height: 80.0,
               child: TextField(
                 style: TextStyle(fontSize: 14.0),
                 decoration: InputDecoration(
