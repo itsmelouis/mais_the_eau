@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:mais_the_eau/screens/home_page.dart';
 import 'package:mais_the_eau/screens/bookmarks_page.dart';
 import 'package:mais_the_eau/screens/glossary_page.dart';
@@ -6,7 +7,13 @@ import 'package:mais_the_eau/screens/settings_page.dart';
 import 'package:mais_the_eau/theme/app_theme.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-void main() {
+void main() async {
+
+  // Assurez-vous que les widgets Flutter sont initialisés
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialisez les données de localisation pour la langue française
+  await initializeDateFormatting('fr', null);
   runApp(const MyApp());
 }
 

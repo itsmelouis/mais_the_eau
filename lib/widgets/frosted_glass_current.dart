@@ -20,7 +20,7 @@ class FrostedGlassCurrent extends StatelessWidget {
 
   String getFormattedDate() {
     final now = DateTime.now();
-    return DateFormat('EEE, d MMM yyyy').format(now);
+    return DateFormat('EEE d MMM yyyy', 'fr').format(now);
   }
 
   @override

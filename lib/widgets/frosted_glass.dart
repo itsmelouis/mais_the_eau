@@ -41,7 +41,7 @@ class FrostedGlassDate extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    DateFormat('EEE, dd MMM yyyy').format(date),
+                    DateFormat('EEE d MMM yyyy', 'fr').format(date),
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Row(

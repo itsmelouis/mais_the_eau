@@ -175,9 +175,9 @@ class _HomePageState extends State<HomePage> {
     return date;
   }
 
-  getTime(final day) {
+  String getTime(final day) {
     DateTime time = DateTime.fromMillisecondsSinceEpoch(day * 1000);
-    final hourTime = DateFormat('jm').format(time);
+    final hourTime = DateFormat('HH:mm', 'fr').format(time);
     return hourTime;
   }
 
@@ -316,7 +316,7 @@ class _HomePageState extends State<HomePage> {
                                   ?.getCurrentWeather()
                                   .current
                                   .weather![0]
-                                  .main
+                                  .description
                                   .toString() ??
                               '',
                           location: location.isNotEmpty ? location : 'Inconnu',
@@ -354,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                                   ?.getCurrentWeather()
                                   .current
                                   .weather![0]
-                                  .main
+                                  .description
                                   .toString() ??
                               '',
                           location: location.isNotEmpty ? location : 'Inconnu',
@@ -417,10 +417,6 @@ class _HomePageState extends State<HomePage> {
                                   .toString() ??
                               '',
                         ),
-                        DailySummary(
-                          summary:
-                              "${weatherData?.getDailyWeather().daily[0].summary}",
-                        ),
                       ],
                     ),
                   ),
@@ -456,7 +452,7 @@ class _HomePageState extends State<HomePage> {
                                   ?.getDailyWeather()
                                   .daily[1]
                                   .weather![0]
-                                  .main
+                                  .description
                                   .toString() ??
                               '',
                           date: DateTime.now()
@@ -518,10 +514,6 @@ class _HomePageState extends State<HomePage> {
                                   .moonPhase
                                   .toString() ??
                               '',
-                        ),
-                        DailySummary(
-                          summary:
-                              "${weatherData?.getDailyWeather().daily[1].summary}",
                         ),
                       ],
                     ),
