@@ -24,19 +24,19 @@ class _BookmarksPageState extends State<BookmarksPage> {
         padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 25.0),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 80.0,
               child: TextField(
-                style: TextStyle(fontSize: 14.0),
+                style: const TextStyle(fontSize: 14.0),
                 decoration: InputDecoration(
                   hintText: 'Rechercher une ville',
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(
                         8.0), // Bordure légèrement arrondie
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   hintStyle: TextStyle(
@@ -46,21 +46,22 @@ class _BookmarksPageState extends State<BookmarksPage> {
                         ?.color
                         ?.withOpacity(0.6),
                   ),
-                  suffixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
+                  suffixIcon: Icon(Icons.search,
+                      color: Theme.of(context).iconTheme.color),
                 ),
               ),
             ),
             const SizedBox(height: 0),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
-              child: const Text(
+              child: Text(
                 'Mes recherches',
                 style: TextStyle(fontSize: 24.0), //
               ),
             ),
             const SizedBox(height: 15),
             for (var i = 0; i < 3; i++)
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
@@ -77,13 +78,13 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       ),
                     ],
                   ),
-                  const Divider(color: Colors.grey),
+                  Divider(color: Colors.grey),
                 ],
               ),
             const SizedBox(height: 25),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
-              child: const Text(
+              child: Text(
                 'Mes favoris',
                 style: TextStyle(fontSize: 24.0), //
               ),
@@ -92,7 +93,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                color: Color(0xFFedf6f9),
+                color: const Color(0xFFedf6f9),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Padding(
@@ -104,14 +105,14 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
+                        const Text(
                           'Valenciennes',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 2),
+                        const SizedBox(height: 2),
                         Text(
                           '19°C  |  Éclaircies',
                           style: TextStyle(
@@ -125,7 +126,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       'assets/icons/day.png',
                       width: 70,
                       height: 70,
-                      color: Color.fromARGB(255, 0, 111, 166),
+                      color: const Color.fromARGB(255, 0, 111, 166),
                     ),
                   ],
                 ),
