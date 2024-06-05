@@ -47,7 +47,7 @@ class FrostedGlassDate extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.location_on, color: Colors.black),
+                      Icon(Icons.location_on, color: Theme.of(context).iconTheme.color),
                       Text(
                         location.isNotEmpty ? location : 'Inconnu',
                         style: Theme.of(context).textTheme.headlineLarge,

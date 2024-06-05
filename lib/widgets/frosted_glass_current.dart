@@ -46,10 +46,10 @@ class FrostedGlassCurrent extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.location_on,
                   size: 30,
-                  color: Colors.black,
+                  color: Theme.of(context).iconTheme.color,
                 ),
                 const SizedBox(width: 10),
                 Text(
