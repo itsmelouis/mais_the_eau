@@ -227,9 +227,9 @@ class _HomePageState extends State<HomePage> {
                         height: 8), // Add some space between text and row
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.location_on,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                         Expanded(
                           child: TextField(
@@ -256,13 +256,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        const Icon(
+                        Icon(
                           Icons.search,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.favorite,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                         const SizedBox(width: 8),
                       ],
