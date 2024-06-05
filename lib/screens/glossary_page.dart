@@ -103,8 +103,7 @@ class _GlossaryPageState extends State<GlossaryPage> {
                                   fit: BoxFit.contain,
                                 ),
                               ),
-                              backgroundColor:
-                                  Color.fromARGB(255, 60, 145, 156),
+                              backgroundColor: Color.fromARGB(255, 0, 111, 166),
                             ),
                             SizedBox(width: 20),
                             Expanded(

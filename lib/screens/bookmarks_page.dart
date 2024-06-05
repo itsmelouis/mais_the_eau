@@ -83,7 +83,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.grey[600],
+                color: Color(0xFFedf6f9),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Padding(
@@ -116,7 +116,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       'assets/icons/day.png',
                       width: 70,
                       height: 70,
-                      color: Colors.grey,
+                      color: Color.fromARGB(255, 0, 111, 166),
                     ),
                   ],
                 ),
