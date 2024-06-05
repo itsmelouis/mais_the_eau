@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mais_the_eau/api/weather.dart';
 import 'package:mais_the_eau/models/weahter_data.dart';
+import 'package:mais_the_eau/screens/bookmarks_page.dart';
 import 'package:mais_the_eau/widgets/daily_summary.dart';
 import 'package:mais_the_eau/widgets/frosted_glass_current.dart';
 import 'package:mais_the_eau/widgets/frosted_glass.dart';
@@ -260,9 +261,19 @@ class _HomePageState extends State<HomePage> {
                           Icons.search,
                           color: Theme.of(context).iconTheme.color,
                         ),
-                        Icon(
-                          Icons.favorite,
+                        IconButton(
+                          icon: Icon(
+                            Icons.favorite,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
                           color: Theme.of(context).iconTheme.color,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BookmarksPage()),
+                            );
+                          },
                         ),
                         const SizedBox(width: 8),
                       ],
