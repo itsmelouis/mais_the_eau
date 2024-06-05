@@ -29,15 +29,24 @@ class _BookmarksPageState extends State<BookmarksPage> {
               child: TextField(
                 style: TextStyle(fontSize: 14.0),
                 decoration: InputDecoration(
-                  labelText: 'Recherche une ville',
-                  labelStyle: TextStyle(fontSize: 14.0),
+                  hintText: 'Rechercher une ville',
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
+                    borderSide: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(
+                        8.0), // Bordure légèrement arrondie
                   ),
-                  suffixIcon: Icon(Icons.search),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  hintStyle: TextStyle(
+                    color: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.color
+                        ?.withOpacity(0.6),
+                  ),
+                  suffixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
                 ),
               ),
             ),
